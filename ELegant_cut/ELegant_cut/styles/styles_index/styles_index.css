@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #ececec;
+    position: relative;
+}
+
+.logo {
+    max-width: 5rem;
+    order: 2; /* Logo en el centro */
+    margin: 0 auto;
+}
+
+/* OCULTAR NAVEGACIÓN NORMAL - Siempre */
+.nav-list {
+    display: none;
+}
+
+/* MOSTRAR BOTÓN HAMBURGUESA - Siempre  */
+.abrir-menu {
+    display: block;
+    border: 0;
+    font-size: 1.5rem;
+    background-color: transparent;
+    cursor: pointer;
+    color: #1c1c1c;
+    z-index: 1001;
+    order: 1; /* Botón a la izquierda */
+}
+
+/* ESTILOS DEL MENÚ DESPLEGABLE - Desde la IZQUIERDA */
+.nav {
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    background-color: #1c1c1c;
+    padding: 4rem 2rem 2rem 2rem;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-100%);
+    z-index: 1000;
+}
+
+.nav.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.cerrar-menu {
+    display: block;
+    border: 0;
+    font-size: 1.5rem;
+    background-color: transparent;
+    cursor: pointer;
+    color: #ececec;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1001;
+}
+
+/* LISTA DEL MENÚ DESPLEGABLE */
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #ececec;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #007bff;
+}
+
+/* Overlay cuando el menú está abierto */
+body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* VISTA DE ESCRITORIO - con ajustes para que se vea el menú en pantallas pequeñas no se que tan bien queda */
+@media screen and (min-width: 769px) {
+    .nav {
+        width: 40%;
+        max-width: 400px;
+    }
+    
+    .nav-list li a {
+        font-size: 1.2rem;
+        padding: 0.75rem 0;
+    }
+}
+
+/* Mover de posici[on el logo (acomodar al gusto) */
+
+.logo {
+    max-width: 5rem;
+    order: 3; 
+    margin-left: auto;
+}
+
+.abrir-menu {
+    order: 1;
+}
