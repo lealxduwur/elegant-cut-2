@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+:root {
+  --Negro: #111205;
+  --NegroMedio: #1F1F1E;
+  --Blanco: #f4f4f4;
+  --Rojo: #BC2041;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comfortaa", sans-serif;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main-content {
+  flex: 100; /* 🔹 Ocupa todo el espacio disponible */}
+
+
+body {
+  background: var(--Blanco);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  margin: 100px auto;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  background: var(--Blanco);
+  height: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.header {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.menu-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100%;
+  background: var(--Negro);
+  color: var(--Blanco);
+  padding-top: 70px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+}
+
+.sidebar ul li a {
+  color: var(--Blanco);
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar ul li:hover {
+  background: var(--NegroMedio);
+}
+
+/* CONTENIDO */
+.main-content {
+  padding-top: 80px;
+  transition: filter 0.3s ease;
+}
+
+.blur {
+  filter: blur(3px);
+}
+
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+/* MODAL */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.overlay.active {
+  backdrop-filter: blur(6px);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--Negro);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.btn {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 0.7em 1.4em;
+}
+
+/* Botón de cierre del menú */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  /* Baja o sube el botón */
+  right: 15px;
+  /* Mueve el botón hacia la derecha o izquierda */
+  background: none;
+  /* Sin fondo */
+  border: none;
+  /* Sin borde */
+  font-size: 24px;
+  /* Tamaño del ícono o texto */
+  color: white;
+  /* Color del botón */
+  cursor: pointer;
+  /* Cambia el cursor al pasar */
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff4d4d;
+  /* Cambia el color al pasar el mouse */
+  transform: scale(1.2);
+  /* Efecto de agrandar */
+}
+
+/* Modal de pago */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 350px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #666;
+  transition: 0.3s;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+/* Campos dinámicos del pago */
+#camposPago input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+#btnPagar {
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* Animación del modal */
+.modal.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 🔹 FORMULARIO DE AGENDAMIENTO */
+.form-container {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  text-align: center;
+  z-index: 5;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  color: var(--Negro);
+  font-weight: 700;
+}
+
+.agenda-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.agenda-form label {
+  text-align: left;
+  font-weight: 600;
+  color: var(--NegroMedio);
+  font-size: 14px;
+}
+
+.agenda-form input,
+.agenda-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.agenda-form input:focus,
+.agenda-form select:focus {
+  border-color: var(--Rojo);
+  box-shadow: 0 0 6px rgba(188, 32, 65, 0.4);
+}
+
+.btn-agendar {
+  background-color: var(--Rojo);
+  color: var(--Blanco);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-agendar:hover {
+  background-color: #d9375a;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background-color: #111827;
+  color: #fff;
+  padding: 40px 0 10px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.footer-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #60a5fa; /* azul suave */
+}
+
+.footer-info p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social a img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.2);
+  filter: brightness(0) invert(0.6) sepia(1) hue-rotate(180deg);
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 10px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}

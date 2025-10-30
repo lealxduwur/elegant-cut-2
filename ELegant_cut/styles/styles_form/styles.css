@@ -101,7 +101,7 @@ body {
 
 .form-input:focus {
     outline: none;
-    border-color: #f0bc00;
+    border-color: #BC2041;
     background-color: white;
     box-shadow: 0 0 0 3px rgba(240, 188, 0, 0.1);
 }
@@ -114,8 +114,8 @@ body {
 .submit-btn {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #f0bc00, #eefa07);
-    color: #000;
+    background:#BC2041; 
+    color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 16px;
@@ -126,7 +126,7 @@ body {
 }
 
 .submit-btn:hover {
-    background: linear-gradient(135deg, #fcce2c, #eefa07);
+    background: #f51d4c;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(240, 188, 0, 0.3);
 }
@@ -142,7 +142,7 @@ body {
 }
 
 .switch-link {
-    color: #f0bc00;
+    color: #000;
     text-decoration: none;
     font-weight: 600;
     cursor: pointer;
@@ -150,4 +150,30 @@ body {
 
 .switch-link:hover {
     text-decoration: underline;
+}
+
+/* Agrega esto al final de tu CSS actual */
+
+/* Asegurar que la página de registro esté oculta inicialmente */
+#register-page {
+    display: none;
+}
+
+/* Cuando el libro está flipped, mostrar register page y ocultar login */
+.book.flipped #login-page {
+    display: none;
+}
+
+.book.flipped #register-page {
+    display: block;
+}
+
+/* Mejorar la transición de las páginas */
+.page {
+    transition: opacity 0.3s ease;
+}
+
+/* Efecto visual mejorado durante el flip */
+.book.flipped .form-box {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }

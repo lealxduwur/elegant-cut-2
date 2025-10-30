@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <link rel="stylesheet" href="../css/agenda.css">
+</head>
+
+<body>
+
+    <!-- Menú lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Quienes Somos</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <!--Contenedor principal -->
+    <div class="main-content" id="main-content">
+
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-btn" id="menu-btn">☰</button>
+            <img class="logo" src="./img/logo.png" alt="Logo">
+        </header>
+
+        <!--Contenido -->
+        <section class="contenido">
+            <div class="overlay"></div>
+
+            <!--Formulario de agendamiento -->
+            <div class="form-container">
+                <h2>Agendar Cita</h2>
+                <form class="agenda-form" id="agendaForm">
+                    <label for="nombre">Nombre del cliente:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+
+                    <label for="barbero">Barbero:</label>
+                    <select id="barbero" name="barbero" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="Carlos">Carlos</option>
+                        <option value="Miguel">Miguel</option>
+                        <option value="Andrés">Andrés</option>
+                    </select>
+
+                    <label for="pago">Método de pago:</label>
+                    <select id="pago" name="pago" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="efectivo">Efectivo</option>
+                    </select>
+
+                    <label for="servicio">Servicio:</label>
+                    <input type="text" id="servicio" name="servicio" value="Corte de cabello" readonly>
+
+                    <button type="submit" class="btn-agendar">Agendar Cita</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- 🔹 Modal de pago -->
+    <div class="modal" id="modalPago">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">✕</span>
+            <h3>Pago por Transferencia</h3>
+
+            <label for="tipoPago">Seleccionar método:</label>
+            <select id="tipoPago" required>
+                <option value="">Seleccionar...</option>
+                <option value="tarjeta">Tarjeta</option>
+                <option value="nequi">Nequi</option>
+            </select>
+
+            <div id="camposPago"></div>
+
+            <button id="btnPagar" class="btn-agendar">Pagar</button>
+        </div>
+    </div>
+
+    </section>
+</div>
+
+
+    <script src="../js/agenda.js"></script>
+
+</body>
+
+</html>
